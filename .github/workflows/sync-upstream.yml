@@ -27,8 +27,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Fetch upstream main
+      - name: Fetch main branches
         run: |
+          git fetch origin +refs/heads/main:refs/remotes/origin/main
           if git remote get-url upstream >/dev/null 2>&1; then
             git remote set-url upstream https://github.com/nvim-treesitter/nvim-treesitter.git
           else
