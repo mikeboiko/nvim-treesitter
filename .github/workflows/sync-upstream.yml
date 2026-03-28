@@ -38,8 +38,7 @@ jobs:
 
       - name: Rebase fork metadata onto upstream
         run: |
-          git checkout main
-          git rebase refs/remotes/upstream/main
+          bash scripts/ci-sync-upstream.sh
 
       - name: Push main
         run: git push --force-with-lease origin main

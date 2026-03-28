@@ -44,24 +44,6 @@ It is strongly recommended to automate this; e.g., using the following spec with
 >[!IMPORTANT]
 > This plugin does not support lazy-loading.
 
-## Using this fork
-
-If you are installing `mikeboiko/nvim-treesitter`, use `branch = 'my-patches'` in your plugin manager. The `main` branch is reserved for tracking upstream plus the small fork-maintenance commits that keep this repository in sync automatically.
-
-This fork keeps two GitHub Actions workflows automated for maintenance: `Sync upstream` refreshes `main`, and `Rebase patches` refreshes `my-patches`. The other inherited workflows are manual-only so they do not create noise for fork maintenance.
-
-- `Sync upstream` rebases the fork-maintenance commits on top of `nvim-treesitter/main` and force-pushes `main`.
-- `Rebase patches` runs automatically after `Sync upstream` succeeds and rebases `my-patches` on top of `main`. It also remains available as a manual workflow.
-
-If `Rebase patches` reports a conflict, resolve it locally with:
-
-```sh
-git checkout my-patches
-git fetch origin upstream
-git rebase origin/main
-git push --force-with-lease origin my-patches
-```
-
 ## Setup
 
 `nvim-treesitter` can be configured by calling `setup`. **You do not need to call `setup` for `nvim-treesitter` to work using default values.**
