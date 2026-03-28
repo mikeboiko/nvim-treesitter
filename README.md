@@ -3,14 +3,13 @@
 </h1>
 
 The `nvim-treesitter` plugin provides
-
 1. functions for installing, updating, and removing [**tree-sitter parsers**](SUPPORTED_LANGUAGES.md);
 2. a collection of **queries** for enabling tree-sitter features built into Neovim for these languages;
 3. a staging ground for [treesitter-based features](#Supported-features) considered for upstreaming to Neovim.
 
 For details on these and how to help improving them, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-> [!CAUTION]
+>[!CAUTION]
 > This is a full, incompatible, rewrite. If you can't or don't want to update, specify the [`master` branch](https://github.com/nvim-treesitter/nvim-treesitter/blob/master/README.md) (which is locked but will remain available for backward compatibility).
 
 # Quickstart
@@ -22,17 +21,16 @@ For details on these and how to help improving them, see [CONTRIBUTING.md](./CON
 - [`tree-sitter-cli`](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) (0.26.1 or later, installed via your package manager, **not npm**)
 - a C compiler in your path (see <https://docs.rs/cc/latest/cc/#compile-time-requirements>)
 
-> [!IMPORTANT]
+>[!IMPORTANT]
 > The current **support policy** for Neovim is
->
-> - the _latest_ [nightly prerelease](https://github.com/neovim/neovim/releases/tag/nightly).
->   Other versions may work but are neither tested nor considered for fixes. Once this plugin is [considered stable](https://github.com/nvim-treesitter/nvim-treesitter/issues/4767), support will be added for the latest release.
+> * the _latest_ [nightly prerelease](https://github.com/neovim/neovim/releases/tag/nightly).
+> Other versions may work but are neither tested nor considered for fixes. Once this plugin is [considered stable](https://github.com/nvim-treesitter/nvim-treesitter/issues/4767), support will be added for the latest release.
 
 ## Installation
 
 You can install `nvim-treesitter` with your favorite package manager (or using the native `package` feature of vim, see `:h packages`).
 
-This plugin is only guaranteed to work with specific versions of language parsers** (as specified in the `parser.lua` table). **When upgrading the plugin, you must make sure that all installed parsers are updated to the latest version\*\* via `:TSUpdate`.
+This plugin is only guaranteed to work with specific versions of language parsers** (as specified in the `parser.lua` table). **When upgrading the plugin, you must make sure that all installed parsers are updated to the latest version** via `:TSUpdate`.
 It is strongly recommended to automate this; e.g., using the following spec with [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
@@ -43,26 +41,8 @@ It is strongly recommended to automate this; e.g., using the following spec with
 }
 ```
 
-> [!IMPORTANT]
+>[!IMPORTANT]
 > This plugin does not support lazy-loading.
-
-## Using this fork
-
-If you are installing `mikeboiko/nvim-treesitter`, use `branch = 'my-patches'` in your plugin manager. The `main` branch is reserved for tracking upstream plus the small fork-maintenance commits that keep this repository in sync automatically.
-
-This fork keeps two GitHub Actions workflows automated for maintenance: `Sync upstream` refreshes `main`, and `Rebase patches` refreshes `my-patches`. The other inherited workflows are manual-only so they do not create noise for fork maintenance.
-
-- `Sync upstream` rebases the fork-maintenance commits on top of `nvim-treesitter/main` and force-pushes `main`.
-- `Rebase patches` runs automatically after `Sync upstream` succeeds and rebases `my-patches` on top of `main`. It also remains available as a manual workflow.
-
-If `Rebase patches` reports a conflict, resolve it locally with:
-
-```sh
-git checkout my-patches
-git fetch origin upstream
-git rebase origin/main
-git push --force-with-lease origin my-patches
-```
 
 ## Setup
 
@@ -175,7 +155,6 @@ Alternatively, if you have a local checkout, you can instead use
       queries = 'queries/neovim', -- symlink queries from given directory
     },
 ```
-
 This will always use the state of the directory as-is (i.e., `branch` and `revision` will be ignored).
 
 2. If the parser name differs from the filetype(s) used by Neovim, you need to register the parser via
@@ -188,7 +167,7 @@ If Neovim does not detect your language's filetype by default, you can use [Neov
 
 3. Start `nvim` and `:TSInstall zimbu`.
 
-> [!IMPORTANT]
+>[!IMPORTANT]
 > If the parser requires an external scanner, this must be written in C.
 
 ### Modifying parsers
