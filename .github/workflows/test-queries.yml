@@ -1,17 +1,12 @@
 name: Tests
 
 on:
-  push:
-    branches:
-      - "main"
-  pull_request:
-    branches:
-      - "main"
+  # Automatic triggers are disabled in this fork so only Sync upstream runs
+  # on its own.
   workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-build-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   check_compilation:

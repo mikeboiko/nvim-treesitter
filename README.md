@@ -48,10 +48,10 @@ It is strongly recommended to automate this; e.g., using the following spec with
 
 If you are installing `mikeboiko/nvim-treesitter`, use `branch = 'my-patches'` in your plugin manager. The `main` branch is reserved for tracking upstream plus the small fork-maintenance commits that keep this repository in sync automatically.
 
-This fork uses two GitHub Actions workflows:
+This fork keeps two GitHub Actions workflows automated for maintenance: `Sync upstream` refreshes `main`, and `Rebase patches` refreshes `my-patches`. The other inherited workflows are manual-only so they do not create noise for fork maintenance.
 
 - `Sync upstream` rebases the fork-maintenance commits on top of `nvim-treesitter/main` and force-pushes `main`.
-- `Rebase patches` rebases `my-patches` on top of `main` and force-pushes it when the rebase succeeds.
+- `Rebase patches` runs automatically after `Sync upstream` succeeds and rebases `my-patches` on top of `main`. It also remains available as a manual workflow.
 
 If `Rebase patches` reports a conflict, resolve it locally with:
 
