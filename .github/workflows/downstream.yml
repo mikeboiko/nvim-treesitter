@@ -1,16 +1,12 @@
 name: Tests
 
 on:
-  pull_request:
-    branches:
-      - "main"
-    paths:
-      - "lua/nvim-treesitter/parsers.lua"
+  # Automatic triggers are disabled in this fork so only Sync upstream runs
+  # on its own.
   workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   test-downstream:
@@ -59,4 +55,3 @@ jobs:
         if: always()
         working-directory:  .tests/nvim-treesitter-context/
         run: ../../ts_query_ls check queries/
-

@@ -1,8 +1,8 @@
 name: Update parsers
 
 on:
-  schedule:
-    - cron: "30 6 * * 6"
+  # Scheduled runs are disabled in this fork because `main` is already kept in
+  # sync with upstream, which brings parser updates along with it.
   workflow_dispatch:
 
 env:
