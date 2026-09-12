@@ -1,20 +1,16 @@
 name: Tests
 
 on:
-  pull_request:
-    types: [unlabeled, labeled, opened, synchronize, reopened]
-    branches:
-      - "main"
+  # Automatic triggers are disabled in this fork so only Sync upstream runs
+  # on its own.
   workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-generate-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   check_compilation:
     name: Generate
-    if: contains(github.event.pull_request.labels.*.name, 'ci:generate') || github.event_name == 'workflow_dispatch'
     uses: ./.github/workflows/test-core.yml
     with:
       type: "generate"
