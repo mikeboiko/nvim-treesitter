@@ -1,8 +1,8 @@
 name: Update parsers
 
 on:
-  schedule:
-    - cron: "30 6 * * 6"
+  # Scheduled runs are disabled in this fork because `main` is already kept in
+  # sync with upstream, which brings parser updates along with it.
   workflow_dispatch:
 
 env:
@@ -17,7 +17,7 @@ jobs:
     name: Update parsers tier ${{ matrix.tier }}
     runs-on: ubuntu-slim
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v6
         with:
           ref: main
 
